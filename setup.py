@@ -6,6 +6,7 @@ setup(
     maintainer = "John Carr",
     maintainer_email = "john.carr@isotoma.com",
     description="ZC Buildout recipe for installing Plone quickly",
+    long_description = open("README.rst").read(),
     license="ZPL 2.1",
     keywords="zope2 buildout",
     url = 'http://github.com/isotoma/isotoma.recipe.ploneprefetch',
