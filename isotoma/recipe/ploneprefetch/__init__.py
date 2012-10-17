@@ -25,12 +25,11 @@ class Recipe(object):
     def __init__(self, buildout, name, options):
         self.buildout, self.name, self.options = buildout, name, options
 
-    def install(self):
         buildout = self.buildout['buildout']
 
         # If no URL is specified then don't do anything
         if not self.options.get("url", None):
-            return []
+            return
 
         # If a python version is specified then make sure that is the version
         # of python we are currently using. There is no point fetching 60mb+ of
@@ -39,12 +38,14 @@ class Recipe(object):
         if python_ver:
             current_ver = "%s.%s" % sys.version_info[:2]
             if python_ver != current_ver:
-                return []
+                return
 
 	# Only way we can tell if we already ran is to look for a Plone egg in
 	# the eggs-directory
         if glob.glob(os.path.join(buildout['eggs-directory'], "Plone-*.egg")):
-            return []
+            return
+
+        print "Attempting to fetch Plone from: %s" % self.options["url"]
 
         # Download the unified installer with the buildout download abstraction
         # Respects the download cache (if there is one)
@@ -56,6 +57,7 @@ class Recipe(object):
         path, is_temp = download(self.options["url"])
 
         # Open the outer .tar.gz and find the inner .tar.bz2
+        print "Preparing to extract..."
         installer = tarfile.open(path)
         buildout_cache = tarfile.open(fileobj=installer.extractfile("%s/packages/buildout-cache.tar.bz2" % installer.next().name))
 
@@ -64,6 +66,7 @@ class Recipe(object):
 
 	# Extract all the things - send downloads into
 	# ${buildout:download-cache} and eggs into ${buildout:eggs-directory}
+        print "Extracting..."
         for f in buildout_cache:
             dest = None
 
@@ -82,5 +85,8 @@ class Recipe(object):
         if is_temp:
             os.unlink(path)
 
+    def install(self):
         return []
+
+    update = install
 
