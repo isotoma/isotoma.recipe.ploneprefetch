@@ -71,12 +71,15 @@ class Recipe(object):
             dest = None
 
             if downloads_directory and f.name.startswith("buildout-cache/downloads/"):
-                dest = os.path.join(downloads_directory, f.name[25:])
+                path = os.path.join(downloads_directory, f.name[25:])
             elif f.name.startswith("buildout-cache/eggs/"):
-                dest = os.path.join(eggs_directory, f.name[20:])
+                path = os.path.join(eggs_directory, f.name[20:])
 
-            if not dest or os.path.exists(dest):
+            if not path or os.path.exists(path):
                 continue
+
+            dest = os.path.dirname(path)
+            f.name = os.path.basename(path)
 
             buildout_cache.extract(f, dest)
 

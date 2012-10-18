@@ -4,7 +4,7 @@ Change History
 0.0.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix stupid bug where ``foo/README`` became ``foo/README/foo/README``.
 
 
 0.0.1 (2012-10-18)
