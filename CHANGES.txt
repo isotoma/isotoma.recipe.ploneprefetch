@@ -1,7 +1,7 @@
 Change History
 ==============
 
-0.0.2 (unreleased)
+0.0.2 (2012-10-18)
 ------------------
 
 - Fix stupid bug where ``foo/README`` became ``foo/README/foo/README``.
