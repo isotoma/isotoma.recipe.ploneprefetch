@@ -18,7 +18,6 @@ import sys
 import glob
 import tarfile
 from zc.buildout.download import Download
-import shutil
 
 
 class Recipe(object):
@@ -59,11 +58,11 @@ class Recipe(object):
         download = Download(
             cache = buildout.get("download-cache", None),
             )
-        path, is_temp = download(self.options["url"])
+        download_path, is_temp = download(self.options["url"])
 
         # Open the outer .tar.gz and find the inner .tar.bz2
         print "Preparing to extract..."
-        installer = tarfile.open(path)
+        installer = tarfile.open(download_path)
         buildout_cache = tarfile.open("", mode="r|bz2", fileobj=installer.extractfile("%s/packages/buildout-cache.tar.bz2" % installer.next().name.rstrip("/")))
 
         eggs_directory = buildout['eggs-directory']
@@ -91,7 +90,7 @@ class Recipe(object):
 	# If user isnt setting ${buildout:download-cache} then we'l have to
 	# clean up the temporary download file
         if is_temp:
-            shutil.rmtree(path)
+            os.unlink(download_path)
 
     def install(self):
         return []
