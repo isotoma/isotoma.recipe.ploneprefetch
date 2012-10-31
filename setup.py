@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="isotoma.recipe.ploneprefetch",
-    version='0.0.7.dev0',
+    version='0.0.7',
     maintainer = "John Carr",
     maintainer_email = "john.carr@isotoma.com",
     description="ZC Buildout recipe for installing Plone quickly",
