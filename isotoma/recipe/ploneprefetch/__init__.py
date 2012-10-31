@@ -74,6 +74,7 @@ class Recipe(object):
         for f in buildout_cache:
             dest = None
 
+            path = ""
             if downloads_directory and f.name.startswith("buildout-cache/downloads/"):
                 path = os.path.join(downloads_directory, f.name[25:])
             elif f.name.startswith("buildout-cache/eggs/"):
