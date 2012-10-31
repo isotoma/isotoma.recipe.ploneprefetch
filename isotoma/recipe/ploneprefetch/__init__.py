@@ -27,6 +27,10 @@ class Recipe(object):
 
         buildout = self.buildout['buildout']
 
+        # This is to allow command line to enable/disable this feature..
+        if self.options.get("enabled", "yes").lower() in ("no", "false", "off", "0"):
+            return
+
         # If no URL is specified then don't do anything
         if not self.options.get("url", None):
             return

@@ -4,7 +4,8 @@ Change History
 0.0.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add a switch to allow recipe to be switched off without having to replumb
+  your buildout.
 
 
 0.0.2 (2012-10-18)
