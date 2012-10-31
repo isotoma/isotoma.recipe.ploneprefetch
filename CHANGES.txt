@@ -4,7 +4,7 @@ Change History
 0.0.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Clean up temporary directories properly.
 
 
 0.0.4 (2012-10-31)

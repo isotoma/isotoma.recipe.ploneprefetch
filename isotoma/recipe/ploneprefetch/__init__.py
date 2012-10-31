@@ -18,6 +18,7 @@ import sys
 import glob
 import tarfile
 from zc.buildout.download import Download
+import shutil
 
 
 class Recipe(object):
@@ -90,7 +91,7 @@ class Recipe(object):
 	# If user isnt setting ${buildout:download-cache} then we'l have to
 	# clean up the temporary download file
         if is_temp:
-            os.unlink(path)
+            shutil.rmtree(path)
 
     def install(self):
         return []
