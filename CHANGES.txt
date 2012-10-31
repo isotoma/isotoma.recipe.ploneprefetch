@@ -1,7 +1,7 @@
 Change History
 ==============
 
-0.0.3 (unreleased)
+0.0.3 (2012-10-31)
 ------------------
 
 - Add a switch to allow recipe to be switched off without having to replumb
