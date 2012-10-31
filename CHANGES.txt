@@ -4,7 +4,7 @@ Change History
 0.0.7 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Don't bother with python2.4 support - too flaky.
 
 
 0.0.6 (2012-10-31)
