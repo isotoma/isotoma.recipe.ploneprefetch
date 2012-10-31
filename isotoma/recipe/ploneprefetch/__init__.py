@@ -63,7 +63,7 @@ class Recipe(object):
         # Open the outer .tar.gz and find the inner .tar.bz2
         print "Preparing to extract..."
         installer = tarfile.open(path)
-        buildout_cache = tarfile.open(fileobj=installer.extractfile("%s/packages/buildout-cache.tar.bz2" % installer.next().name))
+        buildout_cache = tarfile.open("", mode="r|bz2", fileobj=installer.extractfile("%s/packages/buildout-cache.tar.bz2" % installer.next().name.rstrip("/")))
 
         eggs_directory = buildout['eggs-directory']
         downloads_directory = buildout.get("download-cache", None)

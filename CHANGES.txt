@@ -4,7 +4,7 @@ Change History
 0.0.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Support the python2.4 version of tarfile...
 
 
 0.0.3 (2012-10-31)
